@@ -1,0 +1,257 @@
+/* ===== Грустный стиль: дождь, тучи и меланхолия ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(180deg, #2b3a4a 0%, #3a4d5f 40%, #5a6b7d 100%);
+    background-attachment: fixed;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    overflow-x: hidden;
+    color: #c8d3dc;
+}
+
+/* ===== Дождь: полосы падающих капель ===== */
+body::before {
+    content: "";
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-image:
+        linear-gradient(transparent 0%, transparent 90%, rgba(180, 200, 220, 0.5) 90%, rgba(180, 200, 220, 0.5) 100%),
+        linear-gradient(transparent 0%, transparent 92%, rgba(150, 175, 200, 0.4) 92%, rgba(150, 175, 200, 0.4) 100%);
+    background-size: 3px 60px, 2px 40px;
+    background-position: 20px 0, 90px 30px;
+    animation: rain 0.6s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.7;
+}
+
+@keyframes rain {
+    from { transform: translateY(0); }
+    to   { transform: translateY(60px); }
+}
+
+/* ===== Тучи на фоне ===== */
+body::after {
+    content: "☁️        ☁️                    ☁️        ☁️          ☁️";
+    position: fixed;
+    top: 20px;
+    left: -10%;
+    width: 130%;
+    font-size: 60px;
+    letter-spacing: 30px;
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: 0;
+    animation: clouds 30s linear infinite;
+    filter: grayscale(0.6);
+}
+
+@keyframes clouds {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-10%); }
+}
+
+/* ===== Заголовок ===== */
+h1 {
+    font-size: 2.5em;
+    color: #a9c2d6;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6), 0 0 20px rgba(120, 160, 200, 0.4);
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+    font-style: italic;
+    letter-spacing: 2px;
+    animation: sway 6s ease-in-out infinite;
+}
+
+h1::before {
+    content: "🌧️ ";
+    opacity: 0.8;
+}
+
+h1::after {
+    content: " 🌧️";
+    opacity: 0.8;
+}
+
+@keyframes sway {
+    0%, 100% { transform: translateY(0) rotate(-0.5deg); }
+    50%      { transform: translateY(-4px) rotate(0.5deg); }
+}
+
+/* ===== Контейнер с фильмами ===== */
+.films {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== Карточка фильма ===== */
+.film {
+    background: rgba(40, 55, 70, 0.85);
+    border: 2px solid #5a7a95;
+    border-radius: 12px;
+    padding: 18px;
+    width: 260px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6),
+                inset 0 0 30px rgba(80, 110, 140, 0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    position: relative;
+    backdrop-filter: blur(4px);
+    filter: grayscale(0.3);
+}
+
+.film::before {
+    content: "💧";
+    position: absolute;
+    top: -12px;
+    left: 10px;
+    font-size: 22px;
+    opacity: 0.7;
+    animation: drip 3s ease-in infinite;
+}
+
+.film::after {
+    content: "💧";
+    position: absolute;
+    top: -12px;
+    right: 14px;
+    font-size: 18px;
+    opacity: 0.6;
+    animation: drip 3s ease-in infinite 1.5s;
+}
+
+@keyframes drip {
+    0%   { transform: translateY(0); opacity: 0; }
+    20%  { opacity: 0.8; }
+    100% { transform: translateY(40px); opacity: 0; }
+}
+
+.film:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.75),
+                inset 0 0 40px rgba(100, 140, 180, 0.25);
+    border-color: #7a9dba;
+    filter: grayscale(0);
+}
+
+/* ===== Картинка ===== */
+.film img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #4a6a85;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    filter: brightness(0.85) contrast(0.95) saturate(0.7);
+    transition: filter 0.4s ease;
+    display: block;
+}
+
+.film:hover img {
+    filter: brightness(1) contrast(1) saturate(1);
+}
+
+/* ===== Название фильма ===== */
+.film p {
+    margin-top: 16px;
+    font-size: 1.25em;
+    font-weight: normal;
+    font-style: italic;
+    color: #b3c6d6;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    letter-spacing: 1px;
+}
+
+.film p::before {
+    content: "☔ ";
+    opacity: 0.7;
+}
+
+.film p::after {
+    content: " ☔";
+    opacity: 0.7;
+}
+
+/* ===== Ссылка "Попробовать снова" ===== */
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: linear-gradient(180deg, #445c72, #2f4356);
+    color: #c8d3dc;
+    font-size: 1.15em;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    text-decoration: none;
+    border: 1px solid #5a7a95;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 1px;
+}
+
+a:hover {
+    background: linear-gradient(180deg, #516d86, #3a5468);
+    color: #e0e8f0;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.65),
+                0 0 20px rgba(120, 160, 200, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+a:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+a::before {
+    content: "💧 ";
+    opacity: 0.75;
+}
+
+a::after {
+    content: " 💧";
+    opacity: 0.75;
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.7em;
+    }
+
+    .films {
+        gap: 25px;
+    }
+
+    .film {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    body::after {
+        font-size: 40px;
+        letter-spacing: 15px;
+    }
+}

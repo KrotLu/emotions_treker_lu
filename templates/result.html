@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ответ сервера</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Мой умный сайт отвечает</h1>
+
+    <h4>Ты написал:</h4>
+    <blockquote>{{ user_message }}</blockquote>
+    <p>Ответ сервера {{ reply }}</p>
+
+   
+    <p><a href="/">Вернуться на главную</a></p>
+    <p><a href="{{ link }}" >Cмотреть подборку фильмов</a></p>
+    
+</body>
+</html>

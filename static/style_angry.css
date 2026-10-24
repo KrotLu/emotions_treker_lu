@@ -1,0 +1,394 @@
+/* ===== Злой агрессивный стиль: красный, яростный, взрывной ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Impact', 'Arial Black', 'Franklin Gothic Heavy', sans-serif;
+    background:
+        radial-gradient(ellipse at center, #4a0000 0%, #1a0000 50%, #000000 100%);
+    background-attachment: fixed;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    overflow-x: hidden;
+    color: #ff2a2a;
+    letter-spacing: 1px;
+    animation: rageShake 0.15s infinite;
+}
+
+/* ===== Постоянная тряска от ярости ===== */
+@keyframes rageShake {
+    0%   { transform: translate(0, 0) rotate(0deg); }
+    25%  { transform: translate(-1px, 1px) rotate(-0.2deg); }
+    50%  { transform: translate(1px, -1px) rotate(0.2deg); }
+    75%  { transform: translate(-1px, -1px) rotate(-0.1deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* ===== Пульсирующий кровавый пульс по краям экрана ===== */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 50% 50%, transparent 40%, rgba(255, 0, 0, 0.35) 100%);
+    pointer-events: none;
+    z-index: 0;
+    animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    20%      { opacity: 1;   transform: scale(1.03); }
+    40%      { opacity: 0.6; transform: scale(1); }
+    60%      { opacity: 0.95; transform: scale(1.02); }
+}
+
+/* ===== Злые символы, летящие по фону ===== */
+body::after {
+    content: "💢   😡   💥   🔥   💢   😠   💥   🔥   💢   😡   💥   🔥   😠   💢   💥";
+    position: fixed;
+    top: 45%;
+    left: -10%;
+    width: 130%;
+    font-size: 48px;
+    letter-spacing: 55px;
+    opacity: 0.13;
+    pointer-events: none;
+    z-index: 0;
+    animation: rageFly 8s linear infinite;
+    white-space: nowrap;
+}
+
+@keyframes rageFly {
+    0%   { transform: translateX(0) translateY(0) scale(1); opacity: 0.08; }
+    50%  { transform: translateX(-8%) translateY(-15px) scale(1.1); opacity: 0.18; }
+    100% { transform: translateX(-16%) translateY(0) scale(1); opacity: 0.08; }
+}
+
+/* ===== Заголовок ===== */
+h1 {
+    font-size: 3.2em;
+    color: #ff0000;
+    text-shadow:
+        0 0 10px #ff0000,
+        0 0 25px #ff0000,
+        0 0 50px #8b0000,
+        0 0 80px #ff0000,
+        4px 4px 0 #000,
+        -2px -2px 0 #000;
+    margin-bottom: 45px;
+    position: relative;
+    z-index: 2;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    animation: ragePulse 0.8s ease-in-out infinite, rageShake 0.1s infinite;
+}
+
+h1::before {
+    content: "😡 ";
+    display: inline-block;
+    animation: spinRage 1.5s linear infinite;
+}
+
+h1::after {
+    content: " 😡";
+    display: inline-block;
+    animation: spinRage 1.5s linear infinite reverse;
+}
+
+@keyframes ragePulse {
+    0%, 100% {
+        transform: scale(1);
+        color: #ff0000;
+    }
+    50% {
+        transform: scale(1.08);
+        color: #ff5555;
+        text-shadow:
+            0 0 20px #ff0000,
+            0 0 40px #ff0000,
+            0 0 80px #ff3300,
+            0 0 120px #ff0000,
+            4px 4px 0 #000,
+            -2px -2px 0 #000;
+    }
+}
+
+@keyframes spinRage {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ===== Контейнер с фильмами ===== */
+.films {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-bottom: 55px;
+    position: relative;
+    z-index: 2;
+}
+
+/* ===== Карточка фильма — как раскалённый кусок металла ===== */
+.film {
+    background:
+        linear-gradient(160deg, #2a0000 0%, #1a0000 50%, #0a0000 100%);
+    border: 4px solid #ff0000;
+    border-radius: 2px;
+    padding: 22px;
+    width: 275px;
+    box-shadow:
+        0 0 25px rgba(255, 0, 0, 0.8),
+        0 0 50px rgba(255, 0, 0, 0.4),
+        0 10px 40px rgba(0, 0, 0, 0.95),
+        inset 0 0 40px rgba(255, 0, 0, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    animation: filmVibrate 0.25s infinite;
+}
+
+@keyframes filmVibrate {
+    0%   { transform: translate(0, 0) rotate(0deg); }
+    25%  { transform: translate(-1px, 0) rotate(-0.3deg); }
+    50%  { transform: translate(1px, 1px) rotate(0.3deg); }
+    75%  { transform: translate(-1px, -1px) rotate(-0.2deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.film::before {
+    content: "💢";
+    position: absolute;
+    top: -22px;
+    left: -22px;
+    font-size: 38px;
+    animation: ragePulse 0.6s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px #ff0000);
+}
+
+.film::after {
+    content: "💥";
+    position: absolute;
+    bottom: -22px;
+    right: -22px;
+    font-size: 34px;
+    animation: ragePulse 0.6s ease-in-out infinite 0.3s;
+    filter: drop-shadow(0 0 10px #ff0000);
+}
+
+.film:hover {
+    transform: translateY(-8px) scale(1.06) rotate(-1deg);
+    border-color: #ff3300;
+    box-shadow:
+        0 0 50px rgba(255, 0, 0, 1),
+        0 0 100px rgba(255, 0, 0, 0.7),
+        0 0 150px rgba(255, 60, 0, 0.4),
+        0 16px 55px rgba(0, 0, 0, 0.95),
+        inset 0 0 60px rgba(255, 0, 0, 0.3);
+    animation-play-state: paused;
+}
+
+/* ===== Картинка ===== */
+.film img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 3px solid #ff0000;
+    box-shadow:
+        0 0 25px rgba(255, 0, 0, 0.7),
+        inset 0 0 30px rgba(0, 0, 0, 0.8);
+    filter: saturate(1.8) contrast(1.25) brightness(0.9) hue-rotate(-15deg);
+    transition: filter 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+}
+
+.film:hover img {
+    filter: saturate(2.2) contrast(1.4) brightness(1.05) hue-rotate(-20deg);
+    box-shadow:
+        0 0 50px rgba(255, 0, 0, 1),
+        0 0 90px rgba(255, 60, 0, 0.6),
+        inset 0 0 40px rgba(0, 0, 0, 0.9);
+}
+
+/* ===== Название фильма ===== */
+.film p {
+    margin-top: 18px;
+    font-size: 1.55em;
+    font-weight: 900;
+    color: #ff3300;
+    text-shadow:
+        0 0 8px #ff0000,
+        0 0 20px #ff0000,
+        0 0 35px #8b0000,
+        3px 3px 0 #000,
+        -1px -1px 0 #000;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: ragePulse 0.9s ease-in-out infinite;
+}
+
+.film p::before {
+    content: "🔥 ";
+    font-size: 0.85em;
+    display: inline-block;
+    animation: flameFlicker 0.4s infinite alternate;
+}
+
+.film p::after {
+    content: " 🔥";
+    font-size: 0.85em;
+    display: inline-block;
+    animation: flameFlicker 0.4s infinite alternate reverse;
+}
+
+@keyframes flameFlicker {
+    0%   { transform: scale(1) rotate(-5deg); opacity: 0.8; }
+    100% { transform: scale(1.2) rotate(5deg); opacity: 1; }
+}
+
+/* ===== Кнопка "Попробовать снова" — яростный взрыв ===== */
+a {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 16px 42px;
+    background: linear-gradient(180deg, #ff0000 0%, #8b0000 50%, #4a0000 100%);
+    color: #ffffff;
+    font-size: 1.4em;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    text-decoration: none;
+    border: 3px solid #ff3300;
+    border-radius: 4px;
+    box-shadow:
+        0 0 30px rgba(255, 0, 0, 0.9),
+        0 0 60px rgba(255, 0, 0, 0.5),
+        0 8px 25px rgba(0, 0, 0, 0.95),
+        inset 0 0 25px rgba(0, 0, 0, 0.6);
+    transition: all 0.15s ease;
+    position: relative;
+    z-index: 2;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow:
+        0 0 10px #ffffff,
+        0 0 20px #ff0000,
+        2px 2px 0 #000;
+    animation: ragePulse 0.7s ease-in-out infinite;
+    cursor: crosshair;
+}
+
+a::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border: 2px solid #ff3300;
+    border-radius: 6px;
+    opacity: 0;
+    animation: shockwave 1.5s ease-out infinite;
+    pointer-events: none;
+}
+
+@keyframes shockwave {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.9;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+a:hover {
+    background: linear-gradient(180deg, #ff3300 0%, #ff0000 50%, #8b0000 100%);
+    color: #ffffff;
+    border-color: #ffff00;
+    box-shadow:
+        0 0 50px rgba(255, 0, 0, 1),
+        0 0 100px rgba(255, 60, 0, 0.8),
+        0 0 150px rgba(255, 0, 0, 0.5),
+        0 10px 30px rgba(0, 0, 0, 1),
+        inset 0 0 40px rgba(255, 255, 0, 0.3);
+    transform: translateY(-4px) scale(1.1);
+    text-shadow:
+        0 0 15px #ffff00,
+        0 0 30px #ffffff,
+        0 0 45px #ff0000,
+        2px 2px 0 #000;
+}
+
+a:active {
+    transform: translateY(2px) scale(0.98);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+}
+
+a::after {
+    content: " 💥";
+    display: inline-block;
+    animation: explode 1s ease-in-out infinite;
+}
+
+@keyframes explode {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50%      { transform: scale(1.3) rotate(15deg); }
+}
+
+/* ===== Взрывы-вспышки на фоне ===== */
+html {
+    position: relative;
+}
+
+html::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 30% 40%, rgba(255, 100, 0, 0.4) 0%, transparent 25%),
+                radial-gradient(circle at 75% 65%, rgba(255, 0, 0, 0.35) 0%, transparent 30%);
+    pointer-events: none;
+    z-index: 0;
+    animation: explosionFlash 3s ease-in-out infinite;
+}
+
+@keyframes explosionFlash {
+    0%, 100% { opacity: 0.2; }
+    45%      { opacity: 0.9; }
+    50%      { opacity: 0.4; }
+    55%      { opacity: 1; }
+}
+
+/* ===== Адаптив ===== */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+        letter-spacing: 3px;
+    }
+
+    .films {
+        gap: 35px;
+    }
+
+    .film {
+        width: 90%;
+        max-width: 320px;
+    }
+
+    body::after {
+        font-size: 32px;
+        letter-spacing: 30px;
+    }
+
+    a {
+        font-size: 1.15em;
+        padding: 13px 28px;
+        letter-spacing: 2px;
+    }
+}
