@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 import random
-from transformers import pipeline
 from emotions import emotions_treker
 
 app = Flask(__name__) #создаем веб-приложение
